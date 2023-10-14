@@ -64,6 +64,14 @@ app.use('/users',require('./src/routes/user'))
 // TOPPİNG
 app.use('/topping',require('./src/routes/topping'))
 
+
+// PIZZA
+app.use('/pizza',require('./src/routes/pizza'))
+
+
+// ORDER
+app.use('/order',require('./src/routes/order'))
+
 /* ------------------------------------------------------- */
 
 // errorHandler:
