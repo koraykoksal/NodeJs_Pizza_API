@@ -57,6 +57,8 @@ app.all('/', (req, res) => {
     })
 })
 
+// AUTH
+app.use('auth',require('./src/routes/auth'))
 
 // USER :
 app.use('/users',require('./src/routes/user'))
