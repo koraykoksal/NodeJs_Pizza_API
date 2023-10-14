@@ -58,6 +58,11 @@ app.all('/', (req, res) => {
 })
 
 
+// USER :
+app.use('/users',require('./src/routes/user'))
+
+// TOPPİNG
+app.use('/topping',require('./src/routes/topping'))
 
 /* ------------------------------------------------------- */
 
