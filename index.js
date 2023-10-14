@@ -22,6 +22,8 @@ require('express-async-errors')
 /* ------------------------------------------------------- */
 // Configrations:
 
+
+
 // Connect to DB:
 const { dbConnection } = require('./src/configs/dbConnection')
 dbConnection()
@@ -41,8 +43,19 @@ app.use(require('./src/middlewares/logger'))
 // URL SEARCHING
 app.use(require("./src/middlewares/findSearchSortPage"))
 
+
 /* ------------------------------------------------------- */
 // Routes:
+
+// HomePath:
+app.all('/', (req, res) => {
+    res.send({
+        error: false,
+        message: 'Welcome to PIZZA API',
+        isLogin: req.isLogin,
+        user: req.user
+    })
+})
 
 
 
