@@ -5,10 +5,13 @@
 const router = require('express').Router()
 /* ------------------------------------------------------- */
 
-
+const permission = require('../middlewares/permissions')
 const topping = require('../controllers/topping')
 
 //? URL : /toppings
+
+//* router.use tüm route işlemlerinde çalışacak olan middlewaredır. tüm router talepleri için isAdmin bilgisi olacaktır.
+router.use(permission.isAdmin)
 
 router.route('/')
 .get(topping.list)

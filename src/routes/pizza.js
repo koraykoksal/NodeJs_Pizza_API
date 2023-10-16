@@ -5,21 +5,21 @@
 const router = require('express').Router()
 /* ------------------------------------------------------- */
 
-
+const permission = require('../middlewares/permissions')
 const pizza = require('../controllers/pizza')
 
 //? URL : /pizzas
 
 router.route('/')
 .get(pizza.list)
-.post(pizza.create)
+.post(permission.isAdmin,pizza.create)
 
 
 router.route('/:id')
 .get(pizza.read)
-.put(pizza.update)
-.patch(pizza.update)
-.delete(pizza.delete)
+.put(permission.isAdmin,pizza.update)
+.patch(permission.isAdmin,pizza.update)
+.delete(permission.isAdmin,pizza.delete)
 
 
 
