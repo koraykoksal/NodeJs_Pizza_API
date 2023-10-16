@@ -90,4 +90,49 @@ module.exports = {
         })
 
     },
+
+    // Add toppings to Pizza.toppings:
+    pushToppings: async (req, res) => {
+        /*
+            #swagger.tags = ["pizzas"]
+            #swagger.summary = "Add Toppings to pizza"
+        */
+
+        const toppings = req.body?.toppings
+
+        const data = await pizza.updateOne({ _id: req.params.id }, {$push:{toppings:toppings}})
+        
+        const newData = await pizza.findOne({ _id: req.params.id })
+
+        res.status(202).send({
+            error: false,
+            data,
+            toppingsCount:newData.toppings.length,
+            new: newData
+        })
+
+    },
+
+    // Remove toppings from Pizza.toppings:
+    pullToppings: async (req, res) => {
+        /*
+            #swagger.tags = ["Pizzas"]
+            #swagger.summary = "Remove Toppings from Pizza"
+        */
+
+        const toppings = req.body?.toppings // ObjectId
+
+        // const data = await Pizza.findOne({ _id: req.params.id })
+        // data.toppings.pull(toppings)
+        // await data.save()
+        const data = await pizza.updateOne({ _id: req.params.id }, { $pull: { toppings: toppings } })
+        const newData = await pizza.findOne({ _id: req.params.id }).populate('toppings')
+
+        res.status(202).send({
+            error: false,
+            data,
+            toppingsCount: newData.toppings.length,
+            new: newData
+        })
+    },
 }

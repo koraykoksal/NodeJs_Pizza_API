@@ -6,7 +6,12 @@
 
 module.exports = {
 
+    
+
     isLogin: (req, res, next) => {
+
+        //* return next() ile aşağıdaki işlemler gerçekleşmeden işlem yapılacaktır
+        return next()
 
         if (req.isLogin) {
             next()
@@ -17,6 +22,9 @@ module.exports = {
     },
 
     isAdmin: (req, res, next) => {
+
+        //* return next() ile aşağıdaki işlemler gerçekleşmeden işlem yapılacaktır
+        return next()
 
         if (req.isLogin && req.user.isAdmin) {
             next()

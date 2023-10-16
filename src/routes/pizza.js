@@ -22,7 +22,8 @@ router.route('/:id')
 .delete(permission.isAdmin,pizza.delete)
 
 
-
+router.put('/:id/pushToppings', permission.isAdmin, pizza.pushToppings)
+router.put('/:id/pullToppings', permission.isAdmin, pizza.pullToppings)
 
 
 /* ------------------------------------------------------- */
