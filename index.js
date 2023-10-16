@@ -37,6 +37,33 @@ dbConnection()
 app.use(express.json())
 
 
+//? headers dan gelen autoization bilgilerinin kontrol edildiği yer
+// Access Token Control
+app.use(require('./src/middlewares/authentication'))
+
+// const jwt = require('jsonwebtoken')
+
+// app.use((req,res,next)=>{
+
+//     const auth = req.headers?.authorization
+//     // bearer kelimesinden kurtulmak için split(' ') yapıp boşluk bırakılır ve birinci indexdeki değer alırnı
+//     const accessToken = auth ? auth.split(' ')[0] : null
+
+//     req.isLogin = false
+//     req.user = null
+//     jwt.verify(accessToken,process.env.ACCESS_KEY,function(err,userData){
+
+//         if(userData){
+//             req.isLogin=true
+//             req.user = userData
+//         }
+//     })
+
+//     next()
+// })
+
+
+
 // Run Logger:
 app.use(require('./src/middlewares/logger'))
 
