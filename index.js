@@ -63,6 +63,8 @@ app.use(require('./src/middlewares/authentication'))
 // })
 
 
+require('./src/helpers/sendMail')()
+
 
 // Run Logger:
 app.use(require('./src/middlewares/logger'))
